@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class Main {
     
     // GLOBALS
-    public static String filePath = "C:\\Users\\danie\\Desktop\\STCOM\\M0485 Programacion\\M0485 RA5 Practicas\\M0485 RA5 Alumnos\\register.txt";
+    public static String filePath = System.getProperty("user.dir")+"\\register.txt";
     
     public static void main(String[] args)throws IOException{
         Scanner scanner = new Scanner(System.in);
@@ -42,8 +42,6 @@ public class Main {
                 default: System.out.println(RED+"Input Error"+RESET); break;
             }
         }while(!op.equals("0"));
-        
-       
     }
     
     public static void menu(){
@@ -113,7 +111,6 @@ public class Main {
         BufferedReader br = new BufferedReader(new FileReader(file));
         
         String line;
-        
         while((line = br.readLine()) != null){
             String[]p = line.split(",");
             Student NS = new Student(p[0],p[1],p[2],stringToIntIfNumber(p[3]),p[4]);

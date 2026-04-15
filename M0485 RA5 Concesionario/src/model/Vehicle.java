@@ -1,9 +1,10 @@
 package model;
 
 // ASSETS
-import static assets.ColorManager.*;
-import static assets.LogicManager.*;
-import static assets.GeneratorManager.*;
+import static model.ColorManager.*;
+import static model.LogicManager.*;
+import static model.GeneratorManager.*;
+import static model.FileManager.*;
 
 // JAVA IO
 import java.io.BufferedWriter;
@@ -56,10 +57,55 @@ public class Vehicle{
     }
     
     public void create()throws IOException{
+        if(existIDInFile(FILE,PLATE)){System.out.println(RED+PLATE+" Already Registered"+RESET); return;}
         File file = new File(FILE);
         BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));
         bw.write(toCSV());
         bw.flush(); 
         bw.close();
+        System.out.println(GREEN+"+ "+BRAND+" "+MODEL+" Added"+RESET);
+    }
+    
+    public void printInDisplay()throws IOException{
+        String plate = "Plate: "+RED+PLATE+RESET;
+        String brand = "Model: "+RED+BRAND+RESET;
+        String model = RED+MODEL+RESET;
+        System.out.println("- "+plate+" / "+brand+" "+model);
+    }
+    
+    public String returnInList()throws IOException{
+        return PLATE+" / "+BRAND+" "+MODEL;
+    }
+    
+    public void printInBlock()throws IOException{
+        String head = "== "+RED+PLATE+RESET+" ==";
+        String plate = "- Plate: "+RED+PLATE+RESET;
+        String brand = "- Brand: "+RED+BRAND+RESET;
+        String model = "- Model: "+RED+MODEL+RESET;
+        String price = "- Price: "+RED+PRICE+"$"+RESET;
+        String type = "- Type: "+ RED+TYPE+RESET;
+        System.out.println(
+            head+"\n"+
+            plate+"\n"+
+            brand+"\n"+
+            model+"\n"+
+            price+"\n"+
+            type+"\n"
+        );
+    }
+    
+    public void delete()throws IOException{
+        if(!existIDInFile(FILE,PLATE)){System.out.println(RED+PLATE+" does not exist"+RESET); return;}
+        ArrayList<String[]> fileContent = getAllFileContent(FILE);
+        int pos = 0;
+        for(String[] V : fileContent){
+            if(V[0].equals(PLATE)){
+                fileContent.remove(pos);
+                break;
+            }
+            pos++;
+        }
+        writeAllFileContent(FILE,fileContent);
+        System.out.println(RED+"+ "+BRAND+" "+MODEL+" Deleted"+RESET);
     }
 }
