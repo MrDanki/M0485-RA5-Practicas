@@ -49,7 +49,7 @@ public class Room {
     }
     
     public void create()throws IOException{
-        if(existIDInFile(FILE,IntToString(NUMBER))){System.out.println(RED+"Room "+NUMBER+" Already Registered"+RESET); return;}
+        if(ExistIDInFile(FILE,IntToString(NUMBER))){System.out.println(RED+"Room "+NUMBER+" Already Registered"+RESET); return;}
         File file = new File(FILE);
         BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));
         bw.write(toCSV());
@@ -65,8 +65,8 @@ public class Room {
     }
     
     public void delete()throws IOException{
-        if(!existIDInFile(FILE,IntToString(NUMBER))){System.out.println(RED+"Room "+NUMBER+" Does Not Exists"+RESET); return;}
-        ArrayList<String[]> fileContent = getAllFileContent(FILE);
+        if(!ExistIDInFile(FILE,IntToString(NUMBER))){System.out.println(RED+"Room "+NUMBER+" Does Not Exists"+RESET); return;}
+        ArrayList<String[]> fileContent = GetAllFileContent(FILE);
         int pos = 0;
         for(String[] V : fileContent){
             if(StringToInt(V[0]) == NUMBER){
@@ -75,7 +75,7 @@ public class Room {
             }
             pos++;
         }
-        writeAllFileContent(FILE,fileContent);
+        WriteAllFileContent(FILE,fileContent);
         System.out.println(RED+"+ Room "+NUMBER+" Deleted"+RESET);
     }
     

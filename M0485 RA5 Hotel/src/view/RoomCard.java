@@ -26,7 +26,7 @@ public class RoomCard extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     
     public void SetRoomCard(int number)throws IOException{
-        String[]r = getByIDFromFile(FILE,IntToString(number),"1000");
+        String[]r = GetByIDFromFile(FILE,IntToString(number),"1000");
         if(r==null){return;}
         SelectedRoom = new Room(StringToInt(r[0]),r[1],StringToInt(r[2]),StringToBoolean(r[3]));
         

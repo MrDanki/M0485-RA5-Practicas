@@ -1,5 +1,7 @@
 package model;
 
+// Logic Manager are Logical Functions with More Simple Names and Anti Crash Protection
+
 // ASSETS
 import static model.ColorManager.*;
 

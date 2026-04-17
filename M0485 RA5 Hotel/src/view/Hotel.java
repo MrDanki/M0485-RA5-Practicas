@@ -172,7 +172,7 @@ public class Hotel extends javax.swing.JDialog {
                 this.UpdateRoomList();
                 return;
             }
-            if(existIDInFile(FILE,input)){
+            if(ExistIDInFile(FILE,input)){
                 RoomCard R = new RoomCard(StringToInt(input));
                 R.setVisible(true);
                 R.setLocationRelativeTo(this);
@@ -193,7 +193,7 @@ public class Hotel extends javax.swing.JDialog {
             if(R==null){return;}
             String[]room = R.split(" / ");
             System.out.println(room[0]);
-            String[]r = getByIDFromFile(FILE,room[0],"1000");
+            String[]r = GetByIDFromFile(FILE,room[0],"1000");
             if(r==null){return;}
             Room NR = new Room(StringToInt(r[0]),r[1],StringToInt(r[2]),StringToBoolean(r[3]));
             NR.delete();
@@ -210,7 +210,7 @@ public class Hotel extends javax.swing.JDialog {
             if(R==null){return;}
             String[]room = R.split(" / ");
             System.out.println(room[0]);
-            String[]r = getByIDFromFile(FILE,room[0],"1000");
+            String[]r = GetByIDFromFile(FILE,room[0],"1000");
             Room SC = new Room(StringToInt(r[0]),r[1],StringToInt(r[2]),StringToBoolean(r[3]));
             
             if(SC.getDisponible()){
@@ -234,7 +234,7 @@ public class Hotel extends javax.swing.JDialog {
 
     public void UpdateRoomList()throws IOException{
         DefaultListModel<String> D = new DefaultListModel();
-        ArrayList<String[]> fileContent = getAllFileContent(FILE);
+        ArrayList<String[]> fileContent = GetAllFileContent(FILE);
         for(String[] F : fileContent){
             Room R = new Room(StringToInt(F[0]),F[1],StringToInt(F[2]),StringToBoolean(F[3]));
             D.addElement(R.toJList());

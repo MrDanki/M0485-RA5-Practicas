@@ -1,4 +1,7 @@
 package model;
+
+// Color Managers Paints Console Outputs -> RED + "text" + RESET -> To Pain "text" in RED
+
 public class ColorManager {
     
     // RESET
@@ -24,12 +27,12 @@ public class ColorManager {
     public static final String BG_CYAN = "\u001B[46m"; 
     public static final String BG_WHITE = "\u001B[47m";
     
-    // TRUE FALSE PAINTER
-    public static String booleanPainter(boolean input){
+    // BOOLEAN PAINTER
+    public static String BooleanPainter(boolean input){
         if(input){ return GREEN+"true"+RESET; }
         return RED+"false"+RESET;
     }
-    public static String invertedBooleanPainter(boolean input){
+    public static String InvertedBooleanPainter(boolean input){
         if(input){ return RED+"true"+RESET; }
         return GREEN+"false"+RESET;
     }

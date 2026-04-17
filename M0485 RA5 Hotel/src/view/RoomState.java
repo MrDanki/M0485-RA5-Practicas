@@ -17,7 +17,7 @@ public class RoomState extends javax.swing.JDialog {
     public Room SelectedRoom =  null;
     
     public RoomState(int number)throws IOException {
-        String[]r = getByIDFromFile(FILE,IntToString(number),"1000");
+        String[]r = GetByIDFromFile(FILE,IntToString(number),"1000");
         SelectedRoom = new Room(StringToInt(r[0]),r[1],StringToInt(r[2]),StringToBoolean(r[3]));
         initComponents();
     }

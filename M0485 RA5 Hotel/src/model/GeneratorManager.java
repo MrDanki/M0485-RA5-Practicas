@@ -1,5 +1,7 @@
 package model;
 
+// Generator Manager Generates Random Patterns
+
 // JAVA UTIL
 import java.util.Random;
 import java.util.ArrayList;
